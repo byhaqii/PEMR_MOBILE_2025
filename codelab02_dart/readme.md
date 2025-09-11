@@ -6,7 +6,7 @@
 ```dart
 void main() {
   for (int i = 0; i < 5; i++) {
-    print('Hello Khoirul Anwar ${i + 1}');
+    print('Hello Rizal ${i + 1}');
   }
 }
 ```
