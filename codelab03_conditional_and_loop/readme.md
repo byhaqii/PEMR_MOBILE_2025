@@ -119,3 +119,6 @@ After fixing the capitalization, a logical issue prevents anything from being pr
 - Because of this, the final print(index); line is never reached.
 
 - The loop keeps running (doing nothing visible) until index becomes 21. At that point, the if (index == 21) condition is true, and the break; statement runs, which terminates the loop entirely.
+
+## Task
+![alt text](img/task.png)
