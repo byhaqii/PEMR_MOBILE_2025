@@ -16,7 +16,7 @@ print(list[1]);
 ```
 ### Step 2
 
-![alt text](img/prac1-1.png)
+![alt text](img/prac1(1).png)
 
 1. Variable Initialization: The variable test is created and assigned the string value "test2".
 
