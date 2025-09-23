@@ -16,57 +16,60 @@ print(list[1]);
 ```
 ### Step 2
 
-![alt text](img/prac1(1).png)
+![alt text](../img/prac1(1).png)
 
-1. Variable Initialization: The variable test is created and assigned the string value "test2".
+What happens when i run the code?
 
-2. First Condition: The program checks if (test == "test1"). This is false because "test2" does not equal "test1".
-
-3. Second Condition: Since the first condition was false, it moves to the else if (test == "test2"). This is true. The code inside this block runs, printing "Test2". The final else block is then skipped.
-
-3. Third Condition: After the if-else if-else block finishes, the program continues to the next statement: if (test == "test2"). This condition is also true, so its code runs, printing "Test2 again".
-
+	•	A list with elements [1, 2, 3] is created.
+	•	assert(list.length == 3) → passes, since the list length is indeed 3.
+	•	assert(list[1] == 2) → passes, since index 1 has the value 2.
+	•	print(list.length) → prints 3.
+	•	print(list[1]) → prints 2.
+	•	Then, list[1] = 1; changes the value at index 1 from 2 to 1.
+	•	assert(list[1] == 1) → passes, since the value was successfully changed.
+	•	print(list[1]) → prints 1.
 
 
 ### Step 3
 
-![alt text](img/prac1(3).png)
-The reason for the error is that an if statement requires a boolean condition (a value that is either true or false). In your code, you provided the String variable test (which contains the text "true") directly into the condition. The program cannot evaluate a string as a condition.
+![alt text](../img/prac1(3).png)
+
+	•	The list is created with 5 elements: [null, null, null, null, null].
+	•	After inserting the values, it becomes:
+["YourName", "YourNIM", null, null, null].
+	•	Printing shows the updated list with your data at index 0 and 1.
 
 ---
 ## Practicum 2
 ### Step 1
-When we first run the code from Step 1, you get an error. 
-
-The program fails because the variable counter is used in the condition while (counter < 33) before it has been created (declared and initialized). A while loop checks its condition before running the first time, so it immediately spots that it doesn't know what counter is
 
 ```dart
-while (counter < 33) {
-  print(counter);
-  counter++;
-}
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+print(halogens);
 ```
 ### Step 2
-![alt text](img/prac2(1+2).png)
-We need to declare counter as an integer and give it a starting value before the loop begins.
+
+What happens when i run it?
+
+	•	Dart recognizes {} with values inside as a Set (not a List).
+	•	A Set contains unique elements and is unordered.
+	•	The program prints all elements in halogens.
+	•	Example output (order may vary because Sets are unordered):
+
+```dart
+{fluorine, chlorine, bromine, iodine, astatine}
+```
 
 ### Step 3
-```dart
-do {
-  print(counter);
-  counter++;
-} while (counter < 77);
-```
-After fixing the first part and adding the do-while loop, the program runs without any new errors.
+![alt text](../img/prac2(3).png)
 
-The do-while loop continues using the same counter variable. By the time the first while loop finished, the value of counter was 33.
+	1.	Dart’s {} can mean Set or Map depending on context:
+	•	With values → Set.
+	•	Empty {} → Map by default.
+	2.	To make an empty Set, you must declare the type (<String>{}).
+	3.	Elements can be added to a Set with .add() (single value) or .addAll() (multiple values).
+	4.	Sets do not allow duplicates, so repeated values will only appear once.
 
-The do-while loop then does the following:
-- It executes the code block first, printing the current value of counter (which is 33) and incrementing it to 34.
-
-- Then, it checks the condition while (counter < 77). Since 34 is less than 77, it runs the block again.
-
-![alt text](img/prac3(3).png)
 
 ---
 
@@ -75,51 +78,204 @@ The do-while loop then does the following:
 ### Step 1
 
 ```dart
-for (Index = 10; index < 27; index) {
-  print(Index);
-}
+var gifts = {
+  // Key:    Value
+  'first': 'partridge',
+  'second': 'turtledoves',
+  'fifth': 1
+};
+
+var nobleGases = {
+  2: 'helium',
+  10: 'neon',
+  18: 2,
+};
+
+print(gifts);
+print(nobleGases);
 ```
 
 ### Step 2
 
-When we first run the code, it fails with an error. 
+![alt text](../img/prac3(1).png)
 
-There are a few problems in the original for loop:
+What happened when running Step 1 code?
 
-- Case-Sensitivity: Dart is case-sensitive. The code mixes Index (uppercase I) and index (lowercase i), which the program sees as two different variables.
+	•	The program ran successfully without errors.
+	•	Both variables (gifts and nobleGases) were recognized as Maps.
+	•	Maps store data in key–value pairs, so accessing values must be done with their key.
 
-- Missing Increment: The third part of the for loop, which tells the counter how to change (e.g., index++), is completely missing. Without it, the loop would run forever (an infinite loop) if the other errors were fixed.
+✅ No error occurred, so nothing needed to be fixed.
 
-- Missing Type Declaration: The index variable was not declared with a type (like int or var).
 
-![alt text](img/prac3(1+2).png)
 
 To fix it, you must declare the variable with a type, use a consistent name, and add the incrementer.
 
 ### Step 3
+
+![alt text](../img/prac3(3).png)
+
+	•	The gifts map was updated: key 'fifth' now stores "golden rings", and two new keys ('name' and 'nim') were added.
+	•	The nobleGases map was updated: key 18 changed from 2 to "argon", and two new integer keys (99 and 100) were added.
+	•	mhs1 and mhs2 are new Maps created specifically to store "name" and "NIM".
+
+✅ No errors occurred. All maps printed correctly with new values.
+
+---
+## Practicum 3
+### Step 1
+
 ```dart
-If (Index == 21) break;
-Else If (index > 1 || index < 7) continue;
-print(index);
+void main() {
+  var list = [1, 2, 3];
+  var list2 = [0, ...list];
+  print(list);
+  print(list2);
+  print(list2.length);
+}
 ```
 
-![alt text](img/prac3(3).png)
+### Step 2
+Just run the code from Step 1.
 
-The new code has a syntax error: the keywords If and Else If are capitalized. In Dart, they must be lowercase (if and else if).
+	•	No error happens since list is not null.
+	•	If list were null, an error would occur. To fix it, you’d use ...?list.
 
-After fixing the capitalization, a logical issue prevents anything from being printed.
+### Step 3
+![alt text](../img/prac4(3).png)
 
-- Loop starts with index = 10.
+	•	Using ...?list1 avoids errors if list1 is null.
+	•	The new list copies all values, including null.
+	•	Spread operator can also copy other lists, e.g., a student ID.
 
-- The condition if (index > 1 || index < 7) is checked on every loop. Since index will always be greater than 1 (it starts at 10), this condition is always true.
+### Step 4
+![alt text](../img/prac4(4).png)
 
-- When that condition is true, the continue; statement runs. continue immediately stops the current iteration and jumps to the next one, skipping any code below it.
+	•	if inside a list allows adding an item conditionally.
+	•	'Outlet' only appears when promoActive == true.
 
-- Because of this, the final print(index); line is never reached.
+### Step 5
+![alt text](../img/prac4(5).png)
 
-- The loop keeps running (doing nothing visible) until index becomes 21. At that point, the if (index == 21) condition is true, and the break; statement runs, which terminates the loop entirely.
+	•	The case pattern in if (login case 'Manager') adds 'Admin Menu' only when login equals 'Manager'.
 
-## Task
-![alt text](img/task.png)
+### Step 6
+![alt text](../img/prac4(6).png)
 
-[def]: im
+	•	Collection For allows generating a new list directly from another list with a for loop.
+	•	Here, listOfInts = [1,2,3] produces ['#0','#1','#2','#3'].
+	•	This makes building lists concise and dynamic.
+
+
+## Practicum 6
+### Step 1
+```dart
+var record = ('first', a: 2, b: true, 'last');
+print(record)
+```
+
+### Step 2
+Dart prints the record as shown above. No error occurs.
+
+### Step 3
+![alt text](../img/prac5(3).png)
+swap destructures the input record (int, int) and returns a new record with positions exchanged.
+
+### Step 4
+![alt text](../img/prac5(4).png)
+
+### Step 5
+![alt text](../img/prac5(5).png)
+
+---
+## Task 
+1. Done
+2. A **function** in Dart is a block of reusable code that performs a specific task.  It helps in making programs more organized, readable, and avoids code duplication. 
+3. Function
+
+    1. Positional Parameter
+    ```dart
+    void tambah(int a, int b) => print(a + b);
+    tambah(3, 4); // 7
+    ```
+    2. Optional Positional Parameter
+    ``` dart
+    void sapa(String nama, [String? pesan]) {print("Halo $nama, ${pesan ?? 'apa kabar?'}");}
+    ```
+    3. Named Parameter
+    ```dart
+    void buatUser({required String nama, int umur = 18}) {print("Nama: $nama, Umur: $umur");} buatUser(nama: "Rizal", umur: 20);
+    ```
+
+4. Functions di Dart adalah first-class objects, artinya:
+
+	•	Dapat disimpan dalam variabel.
+
+	•	Dapat dijadikan parameter.
+
+	•	Dapat direturn dari fungsi lain.
+    ```dart
+    void cetakPesan(String pesan) => print(pesan);
+
+    void main() {
+    var fungsi = cetakPesan;
+    fungsi("Halo!");
+
+    void jalankan(void Function(String) f) {
+        f("Pesan dari fungsi lain");
+    }
+
+    jalankan(cetakPesan);
+    }
+    ```
+
+5. Anonymous Functions adalah fungsi tanpa nama, biasanya digunakan sebagai callback atau fungsi sekali pakai.
+
+    ```dart
+    void main() {
+    var angka = [1, 2, 3];
+    angka.forEach((n) {
+        print(n * n);
+    });
+    }
+    ```
+6. Perbedaan Lexical Scopes dan Lexical Closures
+
+	•	Lexical Scope: variabel hanya dapat diakses dalam lingkup (scope) tempat ia dibuat.
+    ```dart
+    void main() {
+    var x = 10;
+    void tampil() {
+        print(x);
+    }
+    tampil(); // 10
+    }
+    ```
+    •	Lexical Closure: fungsi dapat “mengingat” variabel di luar scope-nya, bahkan setelah scope asalnya selesai.
+    ```dart
+        Function buatCounter() {
+    var count = 0;
+    return () {
+        count++;
+        return count;
+    };
+    }
+
+    void main() {
+    var counter = buatCounter();
+    print(counter()); // 1
+    print(counter()); // 2
+    }
+    ```
+
+7. Di Dart 3.0+, kita bisa mengembalikan beberapa nilai sekaligus dengan Records.
+    ```dart
+    (String, int) getUser() {
+    return ("Rizal", 21);
+    }
+
+    void main() {
+    var (nama, umur) = getUser();
+    print("Nama: $nama, Umur: $umur");
+    }
+    ```
