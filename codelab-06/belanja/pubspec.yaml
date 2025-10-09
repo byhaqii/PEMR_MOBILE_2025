@@ -1,0 +1,32 @@
+name: belanja
+description: A simple Flutter shopping app (Apple Store UI)
+
+publish_to: 'none' # Prevents accidental publishing
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # iOS-style icons
+  cupertino_icons: ^1.0.8
+
+  # Optional: for advanced navigation (used in Practicum 5)
+  go_router: ^14.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Recommended linting rules
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
