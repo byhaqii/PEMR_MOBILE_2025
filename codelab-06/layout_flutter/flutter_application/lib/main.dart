@@ -50,19 +50,17 @@ class MyApp extends StatelessWidget {
       ],
     );
 
-    // Praktikum 3 - Langkah 1 (textSection)
-    Widget textSection = Container(
-      padding: const EdgeInsets.all(32),
-      child: const Text(
-        'Carilah teks di internet yang sesuai '
-        'dengan foto atau tempat wisata yang ingin '
-        'Anda tampilkan. '
-        'Tambahkan nama dan NIM Anda sebagai '
-        'identitas hasil pekerjaan Anda. '
-        'Selamat mengerjakan 🙂.',
-        softWrap: true,
-      ),
-    );
+  // Praktikum 3 - Langkah 1 (textSection)
+Widget textSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: const Text(
+    'Danau ini menawarkan pemandangan alam yang tenang '
+    'dengan udara sejuk dan air yang jernih, menjadikannya '
+    'tempat favorit untuk bersantai dan menikmati keindahan alam. '
+    '\n\nDibuat oleh: Rizal Baihaqi (NIM: 2341720225)',
+    softWrap: true,
+  ),
+);
 
     return MaterialApp(
       title: 'Flutter layout: Muhammad Rizal Al Baihaqi - 2341720225',
