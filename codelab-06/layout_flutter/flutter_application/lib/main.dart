@@ -1,5 +1,3 @@
-## Praktikum 1
-```dart
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -40,6 +38,18 @@ class MyApp extends StatelessWidget {
       ),
     );
 
+    // Langkah 2: buttonSection
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+
     return MaterialApp(
       title: 'Flutter layout: Muhammad Rizal Al Baihaqi - 2341720225',
       home: Scaffold(
@@ -53,6 +63,7 @@ class MyApp extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             titleSection,
+            buttonSection,
             const Padding(
               padding: EdgeInsets.all(32),
               child: Text(
@@ -72,14 +83,9 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
 
-```
-
-## Praktikum 2
-### Langkah 1
-```dart
-    Column _buildButtonColumn(Color color, IconData icon, String label) {
+  // Langkah 1
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -99,27 +105,4 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
-```
-### Langkah 2 & 3
-```dart
-    Widget titleSection = Container(
-      padding: const EdgeInsets.all(32),
-      child: Row(
-        children: [
-          // ...existing code...
-        ],
-      ),
-    );
-
-    // Langkah 2: buttonSection
-    Color color = Theme.of(context).primaryColor;
-
-    Widget buttonSection = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _buildButtonColumn(color, Icons.call, 'CALL'),
-        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-        _buildButtonColumn(color, Icons.share, 'SHARE'),
-      ],
-    );
-```
+}
