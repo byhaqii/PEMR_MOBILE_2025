@@ -50,6 +50,20 @@ class MyApp extends StatelessWidget {
       ],
     );
 
+    // Praktikum 3 - Langkah 1 (textSection)
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: const Text(
+        'Carilah teks di internet yang sesuai '
+        'dengan foto atau tempat wisata yang ingin '
+        'Anda tampilkan. '
+        'Tambahkan nama dan NIM Anda sebagai '
+        'identitas hasil pekerjaan Anda. '
+        'Selamat mengerjakan 🙂.',
+        softWrap: true,
+      ),
+    );
+
     return MaterialApp(
       title: 'Flutter layout: Muhammad Rizal Al Baihaqi - 2341720225',
       home: Scaffold(
@@ -57,27 +71,14 @@ class MyApp extends StatelessWidget {
         body: ListView(
           children: [
             Image.asset(
-              'images/gunung.jpg',
+              'images/pantai.jpg',
               width: 600,
               height: 240,
               fit: BoxFit.cover,
             ),
             titleSection,
             buttonSection,
-            const Padding(
-              padding: EdgeInsets.all(32),
-              child: Text(
-                'Deskripsi',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                'Wisata Gunung di Batu adalah salah satu destinasi wisata alam yang terletak di kota Batu, Malang, Indonesia. Wisata ini menyuguhkan pemandangan alam pegunungan yang indah serta udara yang sejuk dan segar. Banyak pengunjung yang datang untuk menikmati keindahan alam serta berfoto-foto di spot-spot yang telah disediakan.',
-                softWrap: true,
-              ),
-            ),
+            textSection,
           ],
         ),
       ),

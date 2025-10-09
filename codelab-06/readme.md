@@ -123,3 +123,71 @@ class MyApp extends StatelessWidget {
       ],
     );
 ```
+
+## Praktikum 3
+### Langkah 1 & 2
+```dart
+Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: const Text(
+        'Carilah teks di internet yang sesuai '
+        'dengan foto atau tempat wisata yang ingin '
+        'Anda tampilkan. '
+        'Tambahkan nama dan NIM Anda sebagai '
+        'identitas hasil pekerjaan Anda. '
+        'Selamat mengerjakan 🙂.',
+        softWrap: true,
+      ),
+    );
+
+    return MaterialApp(
+      title: 'Flutter layout: Muhammad Rizal Al Baihaqi - 2341720225',
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Flutter layout demo')),
+        body: ListView(
+          children: [
+            Image.asset(
+              'images/gunung.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
+            titleSection,
+            buttonSection,
+            textSection,
+          ],
+        ),
+      ),
+    );
+```
+
+## Praktikum 4
+### Langkah 1
+```dart
+flutter:
+  uses-material-design: true
+  assets:
+    - images/pantai.jpg
+```
+### Langkah 2 & 3
+```dart
+    return MaterialApp(
+      title: 'Flutter layout: Muhammad Rizal Al Baihaqi - 2341720225',
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Flutter layout demo')),
+        body: ListView(
+          children: [
+            Image.asset(
+              'images/pantai.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
+            titleSection,
+            buttonSection,
+            textSection,
+          ],
+        ),
+      ),
+    );
+```
