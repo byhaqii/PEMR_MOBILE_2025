@@ -43,3 +43,22 @@ It helps widgets.
 3. Capture the result of Step 9 as a GIF, then explain what you have made!
 
 ![alt text](images/hasil-prak2.png)
+
+# Practicum 3
+1. Based on Practicum 3, explain the meaning of the diagram below!
+
+![alt text](images/table.png)
+
+The diagram illustrates how state (data) is shared and accessed across multiple screens in the Flutter widget tree using InheritedNotifier (through PlanProvider).
+
+2. Capture the result from Step 14 as a GIF and explain what you’ve built!
+
+	1.	Display a list of multiple “Master Plans.”
+	2.	Add new plans through a text field.
+	3.	Tap a plan to open a new screen showing its list of tasks.
+	4.	Add, edit, or complete tasks — while progress updates automatically.
+    ![alt text](images/hasil-prak3(1).png)
+    ![alt text](images/hasil-prak3(2).png)
+    ![alt text](images/hasil-prak3(3).png)
+
+3. 
