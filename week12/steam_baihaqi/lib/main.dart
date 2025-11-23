@@ -36,6 +36,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
   late NumberStream numberStream;
   late StreamTransformer transformer;
   late StreamSubscription subscription;
+  late StreamSubscription subscription2;
+  String values = '';
 
   // void changeColor() async {
   //   await for (var eventColor in colorStream.getColors()) {
@@ -56,19 +58,27 @@ class _StreamHomePageState extends State<StreamHomePage> {
   void initState() {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
-    Stream stream = numberStreamController.stream;
-    subscription = stream.listen((event) {
+    Stream stream = numberStreamController.stream.asBroadcastStream();
+    subscription = stream.listen(
+      (event) {
+        setState(() {
+          values += '$event - ';
+          lastNumber = event;
+        });
+      },
+      onError: (error) {
+        setState(() {
+          lastNumber = -1;
+        });
+      },
+      onDone: () {
+        print('OnDone was called');
+      },
+    );
+    subscription2 = stream.listen((event) {
       setState(() {
-        lastNumber = event;
+        values += '$event - ';
       });
-    });
-    subscription.onError((error) {
-      setState(() {
-        lastNumber = -1; // tampilkan -1 saat error
-      });
-    });
-    subscription.onDone(() {
-      print('OnDone was called');
     });
     super.initState();
     // colorStream = ColorStream();
@@ -78,6 +88,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
   @override
   void dispose() {
     subscription.cancel();
+    subscription2.cancel();
     numberStreamController.close();
     super.dispose();
   }
@@ -108,6 +119,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(values),
             Text(lastNumber.toString()),
             ElevatedButton(
               onPressed: () => addRandomNumber(),
