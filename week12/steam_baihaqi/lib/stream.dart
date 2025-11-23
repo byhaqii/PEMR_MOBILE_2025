@@ -9,4 +9,11 @@ class ColorStream {
     Colors.teal,
     Colors.indigo,
   ];
+
+  Stream<Color> getColors() async* {
+    yield* Stream.periodic(const Duration(seconds: 1), (int t) {
+      int index = t % _colors.length;
+      return _colors[index];
+    });
+  }
 }
