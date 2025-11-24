@@ -1,0 +1,1 @@
+![alt text](images/soal2.png)
