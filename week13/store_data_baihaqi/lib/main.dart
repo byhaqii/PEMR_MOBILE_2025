@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'dart:io';
 import 'model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,13 +31,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final storage = const FlutterSecureStorage();
+  final myKey = 'myPass';
+  final pwdController = TextEditingController();
+  String myPass = '';
   int appCounter = 0;
   String pizzaString = '';
   List<Pizza> myPizzas = [];
+  String documentsPath = '';
+  String tempPath = '';
+  late File myFile;
+  String fileText = '';
 
   @override
   void initState() {
     super.initState();
+    getPaths().then((_) {
+      myFile = File('$documentsPath/pizzas.txt');
+      writeFile();
+    });
     readAndWritePreference();
     readJsonFile().then((value) {
       setState(() {
@@ -86,22 +101,74 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Future<bool> writeFile() async {
+    try {
+      await myFile.writeAsString('Muhammad Baihaqi, 2341720225');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> readFile() async {
+    try {
+      String fileContent = await myFile.readAsString();
+      setState(() {
+        fileText = fileContent;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<void> getPaths() async {
+    final docDir = await getApplicationDocumentsDirectory();
+    final tempDir = await getTemporaryDirectory();
+    setState(() {
+      documentsPath = docDir.path;
+      tempPath = tempDir.path;
+    });
+  }
+
+  Future<void> writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+  }
+
+  Future<String> readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('JSON')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text('You have opened the app $appCounter times.'),
-            ElevatedButton(
-              onPressed: () {
-                deletePreference();
-              },
-              child: const Text('Reset counter'),
-            ),
-          ],
+      appBar: AppBar(title: const Text('Path Provider')),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(controller: pwdController),
+              ElevatedButton(
+                child: const Text('Save Value'),
+                onPressed: () {
+                  writeToSecureStorage();
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Read Value'),
+                onPressed: () {
+                  readFromSecureStorage().then((value) {
+                    setState(() {
+                      myPass = value;
+                    });
+                  });
+                },
+              ),
+              Text(myPass),
+            ],
+          ),
         ),
       ),
     );
